@@ -82,10 +82,10 @@ public class UserauditApplication {
 	}
 
 	@Bean
-	DefaultConnectionContext connectionContext(@Value("${cf.apiHost}") String apiHost) {
+	DefaultConnectionContext connectionContext(@Value("${cf.apiHost}") String apiHost, @Value("${cf.skip-ssl-validation:false}") boolean skipSSL) {
 		return DefaultConnectionContext.builder()
 				.apiHost(apiHost)
-				.skipSslValidation(true)
+				.skipSslValidation(skipSSL)
 				.build();
 	}
 
